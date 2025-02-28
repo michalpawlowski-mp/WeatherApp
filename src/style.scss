@@ -19,12 +19,9 @@ input {
   border-radius: 5px;
   background: rgba(255, 255, 255, 0.1);
   color: #fff;
-}
-input::-moz-placeholder {
-  color: #fff;
-}
-input::placeholder {
-  color: #fff;
+  &::placeholder {
+    color: #fff;
+  }
 }
 
 button {
@@ -35,9 +32,9 @@ button {
   background: #ff7e5f;
   color: #fff;
   transition: background 0.3s ease;
-}
-button:hover {
-  background: #feb47b;
+  &:hover {
+    background: #feb47b;
+  }
 }
 
 #weather {
@@ -46,4 +43,4 @@ button:hover {
   background: rgba(255, 255, 255, 0.1);
   padding: 20px;
   border-radius: 10px;
-}/*# sourceMappingURL=style.css.map */
+}
