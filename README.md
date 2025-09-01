@@ -19,7 +19,7 @@ Prosta, responsywna aplikacja do sprawdzania pogody, która pobiera dane z API.
 ---
 ### Jak uruchomić projekt
 
-1. Sklonuj repozytorium na swój komputer.
+1. Sklonuj repozytorium na swój komputer. `git clone https://github.com/michalpawlowski-mp/WeatherApp`
 2. Zainstaluj zależności: `npm install`
 3. Uruchom serwer deweloperski: `npm run dev`
 4. Otwórz adres podany w konsoli (zazwyczaj `http://localhost:5173`) w swojej przeglądarce.
