@@ -1,7 +1,6 @@
 export async function GET(req) {
   const { searchParams } = new URL(req.url);
   const city = searchParams.get("city");
-
   const apiKey = process.env.WEATHER_API_KEY;
 
   const res = await fetch(
@@ -9,6 +8,10 @@ export async function GET(req) {
   );
 
   const data = await res.json();
+
+  if (!res.ok) {
+    return Response.json({ error: "Nie znaleziono miasta" }, { status: res.status });
+  }
 
   return Response.json(data);
 }
