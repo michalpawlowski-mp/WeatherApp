@@ -9,9 +9,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="pl">
-      <body className="vh-100 d-flex flex-column overflow-hidden bg-primary bg-gradient text-white">
-        {children}
-      </body>
+      <body className="vh-100 d-flex flex-column overflow-hidden">{children}</body>
     </html>
   );
 }
