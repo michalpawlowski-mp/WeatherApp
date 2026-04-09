@@ -46,24 +46,16 @@ export default function WeatherApp() {
   }
 
   return (
-    <div className="min-vh-100 py-5">
-      <div className="container" style={{ maxWidth: 900 }}>
-        <h1
-          className="text-center fw-semibold mb-4"
-          style={{ fontSize: 20, color: "#e8e8f0" }}
-        >
-          Aplikacja pogodowa
-        </h1>
-
-        <SearchBar
-          city={city}
-          setCity={setCity}
-          onSearch={() => fetchWeather(city)}
-          loading={loading}
-        />
-        <WeatherResult weather={weather} error={error} />
-        <CityGrid cityCards={cityCards} onCityClick={handleCityClick} />
-      </div>
-    </div>
+    <>
+      <h1 className="text-center text-light fs-1 fw-semibold ">Aplikacja pogodowa</h1>
+      <SearchBar
+        city={city}
+        setCity={setCity}
+        onSearch={() => fetchWeather(city)}
+        loading={loading}
+      />
+      <WeatherResult weather={weather} error={error} />
+      <CityGrid cityCards={cityCards} onCityClick={handleCityClick} />
+    </>
   );
 }

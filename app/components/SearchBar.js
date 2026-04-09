@@ -6,7 +6,7 @@ export default function SearchBar({ city, setCity, onSearch, loading }) {
   }
 
   return (
-    <div className="input-group mb-5 mx-auto" style={{ maxWidth: 460 }}>
+    <div className="input-group mb-5 mx-auto mt-2 w-100">
       <input
         type="text"
         className="form-control dark-input"
@@ -16,8 +16,7 @@ export default function SearchBar({ city, setCity, onSearch, loading }) {
         onKeyDown={handleKeyDown}
       />
       <button
-        className="btn px-3"
-        style={{ background: "#5b5bd6", color: "#fff", border: "none" }}
+        className="btn px-3 text-white boder-0 bg-secondary"
         onClick={onSearch}
         disabled={loading}
       >
