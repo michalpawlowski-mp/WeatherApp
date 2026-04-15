@@ -1,7 +1,7 @@
 "use client";
-import { useState, useEffect } from "react";
 
-const POPULAR_CITIES = ["Warszawa", "Londyn", "Madryt", "Paryż", "Rzym", "Berlin"];
+import { useState, useEffect } from "react";
+import { POPULAR_CITIES } from "../constants/cities";
 
 export function useWeather() {
   const [city, setCity] = useState("");
@@ -9,17 +9,24 @@ export function useWeather() {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
   const [cityCards, setCityCards] = useState([]);
+  const [loadingCards, setLoadingCards] = useState(true);
 
   useEffect(() => {
     async function fetchAllCities() {
-      const results = await Promise.all(
-        POPULAR_CITIES.map(async (name) => {
-          const res = await fetch(`/api/weather?city=${encodeURIComponent(name)}`);
-          const data = await res.json();
-          return res.ok ? { name, data } : null;
-        }),
-      );
-      setCityCards(results.filter(Boolean));
+      try {
+        const results = await Promise.all(
+          POPULAR_CITIES.map(async (name) => {
+            const res = await fetch(`/api/weather?city=${encodeURIComponent(name)}`);
+            const data = await res.json();
+            return res.ok ? { name, data } : null;
+          }),
+        );
+        setCityCards(results.filter(Boolean));
+      } catch (err) {
+        console.error("Błąd ładowania miast:", err);
+      } finally {
+        setLoadingCards(false);
+      }
     }
     fetchAllCities();
   }, []);
@@ -29,11 +36,16 @@ export function useWeather() {
     setError(null);
     setWeather(null);
     setLoading(true);
-    const res = await fetch(`/api/weather?city=${encodeURIComponent(cityName)}`);
-    const data = await res.json();
-    setLoading(false);
-    if (!res.ok) setError(data.error);
-    else setWeather(data);
+    try {
+      const res = await fetch(`/api/weather?city=${encodeURIComponent(cityName)}`);
+      const data = await res.json();
+      if (!res.ok) setError(data.error);
+      else setWeather(data);
+    } catch (err) {
+      setError("Błąd połączenia z internetem");
+    } finally {
+      setLoading(false);
+    }
   }
 
   function handleCityClick(name) {
@@ -48,6 +60,7 @@ export function useWeather() {
     error,
     loading,
     cityCards,
+    loadingCards,
     fetchWeather,
     handleCityClick,
   };

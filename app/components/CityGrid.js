@@ -8,7 +8,7 @@ export default function CityGrid({ cityCards, onCityClick }) {
         {cityCards.map(({ name, data }) => (
           <div className="col-6 col-md-4" key={name}>
             <div
-              className="card bg-dark border border-secondary rounded-3 cursor-pointer p-3 "
+              className="card bg-dark border border-secondary rounded-3 p-3"
               onClick={() => onCityClick(data.name)}
             >
               <div className="d-flex justify-content-between align-items-center mb-1">
