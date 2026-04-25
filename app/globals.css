@@ -1,0 +1,11 @@
+@import "bootstrap/dist/css/bootstrap.min.css";
+
+.alertbtn {
+  padding: 0.75rem 1rem;
+  margin: 0 auto;
+  background: #1e1e2e;
+  border: 1px solid #ef4444;
+  border-radius: 8px;
+  color: #f87171;
+  font-size: 14px;
+}

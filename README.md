@@ -5,7 +5,8 @@ Aplikacja pogodowa zbudowana w **Next.js 16**, pobierająca dane w czasie rzeczy
 ![Next.js](https://img.shields.io/badge/Next.js-16-black?logo=next.js)
 ![React](https://img.shields.io/badge/React-19-61DAFB?logo=react)
 ![Bootstrap](https://img.shields.io/badge/Bootstrap-5.3-7952B3?logo=bootstrap)
-![SCSS](https://img.shields.io/badge/SCSS-sass-CC6699?logo=sass)
+
+<!-- ![SCSS](https://img.shields.io/badge/SCSS-sass-CC6699?logo=sass) -->
 
 ## 🚀 Demo
 
@@ -25,38 +26,14 @@ Aplikacja pogodowa zbudowana w **Next.js 16**, pobierająca dane w czasie rzeczy
 
 ## 🛠️ Stack technologiczny
 
-| Technologia        | Zastosowanie                           |
-| ------------------ | -------------------------------------- |
-| Next.js 16         | Framework — App Router, API Routes     |
-| React 19           | UI, custom hook `useWeather`           |
-| Bootstrap 5.3      | Stylowanie i responsywność             |
-| SCSS               | Globalne style i nadpisania Bootstrapa |
-| OpenWeatherMap API | Dane pogodowe w czasie rzeczywistym    |
+| Technologia        | Zastosowanie                        |
+| ------------------ | ----------------------------------- |
+| Next.js 16         | Framework — App Router, API Routes  |
+| React 19           | UI, custom hook `useWeather`        |
+| Bootstrap 5.3      | Stylowanie i responsywność          |
+| OpenWeatherMap API | Dane pogodowe w czasie rzeczywistym |
 
----
-
-## 📁 Struktura projektu
-
-```
-weather-app/
-├── app/
-│   ├── api/
-│   │   └── weather/
-│   │       └── route.js          # API Route — proxy do OpenWeatherMap
-│   ├── components/
-│   │   ├── SearchBar.jsx         # Pole wyszukiwania z obsługą Entera
-│   │   ├── WeatherResult.jsx     # Wynik pogody dla szukanego miasta
-│   │   └── CityGrid.jsx          # Kafelki popularnych miast
-│   ├── constants/
-│   │   └── cities.js             # Lista popularnych miast
-│   ├── hooks/
-│   │   └── useWeather.js         # Custom hook — cała logika i fetching
-│   ├── layout.jsx                # Root layout
-│   ├── page.jsx                  # Strona główna
-│   └── globals.scss              # Globalne style SCSS
-├── .env.local                    # Klucz API (nie commitować!)
-└── package.json
-```
+<!-- | SCSS               | Globalne style i nadpisania Bootstrapa | -->
 
 ---
 
