@@ -32,7 +32,11 @@ export function useWeather() {
   }, []);
 
   async function fetchWeather(cityName) {
-    if (!cityName.trim()) return;
+    if (!cityName.trim()) {
+      setError("Wpisz nazwę miasta");
+      setWeather(null);
+      return;
+    }
     setError(null);
     setWeather(null);
     setLoading(true);
