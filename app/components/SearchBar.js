@@ -6,7 +6,7 @@ export default function SearchBar({ city, setCity, onSearch, loading }) {
   }
 
   return (
-    <div className="row justify-content-center w-100 mx-0 mt-2 mb-5">
+    <div className="row justify-content-center w-100 mx-0 mt-2 mb-4">
       <div className="col-11 col-md-8 col-lg-6 col-xxl-4">
         <div className="input-group">
           <input

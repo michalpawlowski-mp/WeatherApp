@@ -4,7 +4,7 @@ export default function CityGrid({ cityCards, onCityClick }) {
   return (
     <div className="row justify-content-center w-100 mx-0 mt-2 mb-5">
       <div className="col-11 col-md-8 col-lg-6 col-xxl-4">
-        <p className="mb-3 fs-6 text-white-50">Popularne miasta</p>
+        <p className="mb-3 fs-5 text-white-50">Popularne miasta</p>
         <div className="row g-3">
           {cityCards.map(({ name, data }) => (
             <div className="col-6" key={name}>

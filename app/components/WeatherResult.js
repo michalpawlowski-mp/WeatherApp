@@ -1,5 +1,5 @@
 export default function WeatherResult({ weather, error }) {
-  if (error) return <div className="alertbtn ">{error}</div>;
+  if (error) return <div className="alertbtn">{error}</div>;
   if (!weather) return null;
 
   return (
