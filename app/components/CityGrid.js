@@ -1,4 +1,23 @@
-export default function CityGrid({ cityCards, onCityClick }) {
+export default function CityGrid({ cityCards, loadingCards, onCityClick }) {
+  if (loadingCards) {
+    return (
+      <div className="row justify-content-center w-100 mx-0 mt-2 mb-5">
+        <div className="col-11 col-md-8 col-lg-6 col-xxl-4">
+          <p className="mb-3 fs-5 text-white-50">Popularne miasta</p>
+          <div className="row g-3">
+            {[...Array(6)].map((_, i) => (
+              <div className="col-6" key={i}>
+                <div
+                  className="card bg-dark border border-secondary rounded-3 p-3"
+                  style={{ height: "84px", opacity: 0.4 }}
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    );
+  }
   if (cityCards.length === 0) return null;
 
   return (
@@ -8,9 +27,12 @@ export default function CityGrid({ cityCards, onCityClick }) {
         <div className="row g-3">
           {cityCards.map(({ name, data }) => (
             <div className="col-6" key={name}>
-              <div
-                className="card bg-dark border border-secondary rounded-3 p-3 h-100 pointer"
+              <button
+                className="btn text-start w-100 h-100 card bg-dark border border-secondary rounded-3 p-3 h-100 pointer"
                 onClick={() => onCityClick(data.name)}
+                type="button"
+                tabIndex={0}
+                onKeyDown={(e) => e.key === "Enter" && onCityClick(data.name)}
               >
                 <div className="d-flex justify-content-between align-items-center mb-1">
                   <span className="fw-semibold fs-6 text-white text-truncate me-2">
@@ -23,7 +45,7 @@ export default function CityGrid({ cityCards, onCityClick }) {
                 <p className="mb-0 text-capitalize fs-6 text-white-50">
                   {data.weather[0].description}
                 </p>
-              </div>
+              </button>
             </div>
           ))}
         </div>

@@ -2,7 +2,7 @@ import "./globals.css";
 
 export const metadata = {
   title: "WeatherApp",
-  description: "Aplikacja pogodowa stworzona w Next.js z użyciem SCSS i Bootstrapa",
+  description: "Aplikacja pogodowa stworzona w Next.js z użyciem CSS i Bootstrapa",
   authors: [{ name: "MPDEV | Michał Pawłowski", url: "https://michalpawlowski.pl/" }],
 };
 

@@ -6,12 +6,10 @@ export async function GET(req) {
     const { searchParams } = new URL(req.url);
     const city = searchParams.get("city")?.trim();
 
-    if (!city || city.length > 100) {
+    if (!city || city.length > 100 || !/^[a-zA-ZÀ-ž\s-]+$/.test(city)) {
       return new Response(
         JSON.stringify({ error: "Brak lub nieprawidłowy parametr city" }),
-        {
-          status: 400,
-        },
+        { status: 400 },
       );
     }
 
