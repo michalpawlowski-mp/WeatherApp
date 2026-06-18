@@ -22,18 +22,20 @@ export default function WeatherApp() {
         <Image src={ImageApp} alt="Ikona aplikacji pogodowej" width={48} height={48} />
         <h1 className="text-center text-light fs-1 fw-semibold">Aplikacja pogodowa</h1>
       </header>
-      <SearchBar
-        city={city}
-        setCity={setCity}
-        onSearch={() => fetchWeather(city)}
-        loading={loading}
-      />
-      <WeatherResult weather={weather} error={error} />
-      <CityGrid
-        cityCards={cityCards}
-        loadingCards={loadingCards}
-        onCityClick={handleCityClick}
-      />
+      <main>
+        <SearchBar
+          city={city}
+          setCity={setCity}
+          onSearch={() => fetchWeather(city)}
+          loading={loading}
+        />
+        <WeatherResult weather={weather} error={error} />
+        <CityGrid
+          cityCards={cityCards}
+          loadingCards={loadingCards}
+          onCityClick={handleCityClick}
+        />
+      </main>
     </>
   );
 }

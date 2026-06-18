@@ -10,7 +10,7 @@ Aplikacja pogodowa zbudowana w **Next.js 16**, pobierająca dane w czasie rzeczy
 
 ## 🚀 Demo
 
-🔗 [weather-app.vercel.app](https://weather-app.vercel.app)
+🔗 [LiveDemo](https://weather-app-mpdev.vercel.app/)
 
 ## ✨ Funkcjonalności
 
