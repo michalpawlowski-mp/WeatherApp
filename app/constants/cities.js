@@ -1,1 +1,10 @@
-export const POPULAR_CITIES = ["Warszawa", "Londyn", "Madryt", "Paryż", "Rzym", "Berlin"];
+export const POPULAR_CITIES = [
+  "Warszawa",
+  "Madryt",
+  "Rzym",
+  "Londyn",
+  "Paryż",
+  "Berlin",
+  "Waszyngton",
+  "Tokio",
+];

@@ -17,7 +17,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="pl">
-      <body className="vh-100 vw-100 d-flex flex-column overflow-hidden p-2 py-5 bg-dark bg-gradient">
+      <body className="vh-100 vw-100 d-flex flex-column overflow-x-hidden overflow-y-auto bg-dark bg-gradient">
         {children}
       </body>
     </html>

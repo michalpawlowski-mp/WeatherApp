@@ -6,6 +6,7 @@ import WeatherResult from "./components/WeatherResult";
 import CityGrid from "./components/CityGrid";
 import Image from "next/image";
 import ImageApp from "./assets/image.png";
+import Footer from "./components/Footer";
 
 export default function WeatherApp() {
   const { city, setCity, weather, error, loading, fetchWeather } = useSearch();
@@ -18,7 +19,7 @@ export default function WeatherApp() {
 
   return (
     <>
-      <header className="d-flex w-100 justify-content-center align-items-center gap-4 pb-4">
+      <header className="d-flex w-100 justify-content-center align-items-center gap-4 mb-4 mt-5">
         <Image src={ImageApp} alt="Ikona aplikacji pogodowej" width={48} height={48} />
         <h1 className="text-center text-light fs-1 fw-semibold">Aplikacja pogodowa</h1>
       </header>
@@ -36,6 +37,7 @@ export default function WeatherApp() {
           onCityClick={handleCityClick}
         />
       </main>
+      <Footer />
     </>
   );
 }

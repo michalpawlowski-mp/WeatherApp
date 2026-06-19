@@ -6,8 +6,6 @@ Aplikacja pogodowa zbudowana w **Next.js 16**, pobierająca dane w czasie rzeczy
 ![React](https://img.shields.io/badge/React-19-61DAFB?logo=react)
 ![Bootstrap](https://img.shields.io/badge/Bootstrap-5.3-7952B3?logo=bootstrap)
 
-<!-- ![SCSS](https://img.shields.io/badge/SCSS-sass-CC6699?logo=sass) -->
-
 ## 🚀 Demo
 
 🔗 [LiveDemo](https://weather-app-mpdev.vercel.app/)
@@ -15,7 +13,7 @@ Aplikacja pogodowa zbudowana w **Next.js 16**, pobierająca dane w czasie rzeczy
 ## ✨ Funkcjonalności
 
 - 🔍 Wyszukiwanie pogody dla dowolnego miasta na świecie
-- 🌍 Kafelki z pogodą dla 6 popularnych miast (Warszawa, Londyn, Madryt, Paryż, Rzym, Berlin)
+- 🌍 Kafelki z pogodą dla 6 popularnych miast (Warszawa, Londyn, Madryt, Paryż, Rzym, Berlin, Waszyngton, Tokio)
 - 🌡️ Temperatura, odczuwalna, wilgotność i prędkość wiatru
 - ⌨️ Wyszukiwanie przez `Enter` lub przycisk
 - 💬 Opisy pogody w języku polskim
@@ -26,14 +24,12 @@ Aplikacja pogodowa zbudowana w **Next.js 16**, pobierająca dane w czasie rzeczy
 
 ## 🛠️ Stack technologiczny
 
-| Technologia        | Zastosowanie                        |
-| ------------------ | ----------------------------------- |
-| Next.js 16         | Framework — App Router, API Routes  |
-| React 19           | UI, custom hook `useWeather`        |
-| Bootstrap 5.3      | Stylowanie i responsywność          |
-| OpenWeatherMap API | Dane pogodowe w czasie rzeczywistym |
-
-<!-- | SCSS               | Globalne style i nadpisania Bootstrapa | -->
+| Technologia        | Zastosowanie                                  |
+| ------------------ | --------------------------------------------- |
+| Next.js 16         | Framework — App Router, API Routes            |
+| React 19           | UI, custom hooki `useSearch` i `useCityCards` |
+| Bootstrap 5.3      | Stylowanie i responsywność                    |
+| OpenWeatherMap API | Dane pogodowe w czasie rzeczywistym           |
 
 ---
 
@@ -88,7 +84,10 @@ Aplikacja używa **Next.js API Route** jako proxy do OpenWeatherMap — klucz AP
 Przeglądarka → /api/weather?city=Warszawa → OpenWeatherMap API
 ```
 
-Cała logika fetchingu i stanu aplikacji jest wydzielona do custom hooka `useWeather`. Komponenty są wyłącznie prezentacyjne i nie zawierają logiki biznesowej.
+Logika aplikacji jest podzielona na dwa custom hooki:
+
+- `useSearch` (wyszukiwanie miasta)
+- `useCityCards` (ładowanie popularnych miast).
 
 ---
 

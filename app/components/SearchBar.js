@@ -19,6 +19,7 @@ export default function SearchBar({ city, setCity, onSearch, loading }) {
           />
           <button
             className="btn px-4 text-white border-0 bg-secondary"
+            aria-label={loading ? "Ładowanie..." : "Szukaj pogody"}
             onClick={onSearch}
             disabled={loading}
           >

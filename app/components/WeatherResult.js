@@ -1,15 +1,19 @@
+const countryName = new Intl.DisplayNames(["pl"], { type: "region" });
+
 export default function WeatherResult({ weather, error }) {
   if (error) return <div className="alertbtn">{error}</div>;
   if (!weather) return null;
 
   return (
-    <div className="row justify-content-center w-100 mx-0 mb-5">
+    <div className="row justify-content-center w-100 mx-0 mb-4">
       <div className="col-11 col-md-8 col-lg-6 col-xxl-4">
         <div className="card bg-dark border border-secondary rounded-3 p-3 text-white">
           <div className="d-flex justify-content-between align-items-start w-100">
             <div>
               <p className="fw-semibold mb-0 fs-4">{weather.name}</p>
-              <p className="mb-3 fs-6 text-white-50">{weather.sys.country}</p>
+              <p className="mb-3 fs-6 text-white-50">
+                {countryName.of(weather.sys.country)}
+              </p>
             </div>
             <span className="badge fs-3 fw-semibold text-primary px-3 py-2">
               {Math.round(weather.main.temp)}°C

@@ -1,5 +1,9 @@
 @import "bootstrap/dist/css/bootstrap.min.css";
 
+::-webkit-scrollbar {
+  display: none;
+}
+
 .alertbtn {
   padding: 0.75rem 1rem;
   margin: 15px auto;
