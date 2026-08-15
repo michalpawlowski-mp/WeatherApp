@@ -5,16 +5,21 @@ export async function GET(req) {
   try {
     const { searchParams } = new URL(req.url);
     const city = searchParams.get("city")?.trim();
+    const lat = searchParams.get("lat");
+    const lon = searchParams.get("lon");
 
-    if (!city || city.length > 100 || !/^[a-zA-ZÀ-ž\s-]+$/.test(city)) {
+    if (!city && (!lat || !lon)) {
       return new Response(
-        JSON.stringify({ error: "Brak lub nieprawidłowy parametr city" }),
+        JSON.stringify({ error: "Brak parametrów zapytania" }),
         { status: 400 },
       );
     }
 
-    const encodedCity = encodeURIComponent(city);
-    const weatherUrl = `${API_BASE}weather?q=${encodedCity}&appid=${API_KEY}&units=metric&lang=pl`;
+    const query = city
+      ? `q=${encodeURIComponent(city)}`
+      : `lat=${lat}&lon=${lon}`;
+
+    const weatherUrl = `${API_BASE}weather?${query}&appid=${API_KEY}&units=metric&lang=pl`;
 
     const res = await fetch(weatherUrl);
 
@@ -29,14 +34,19 @@ export async function GET(req) {
       };
 
       const message = errorMap[res.status] || "Nieznany błąd";
-      return new Response(JSON.stringify({ error: message }), { status: res.status });
+      return new Response(JSON.stringify({ error: message }), {
+        status: res.status,
+      });
     }
 
     const data = await res.json();
     return new Response(JSON.stringify(data), { status: 200 });
   } catch (err) {
-    return new Response(JSON.stringify({ error: "Błąd serwera", details: err.message }), {
-      status: 500,
-    });
+    return new Response(
+      JSON.stringify({ error: "Błąd serwera", details: err.message }),
+      {
+        status: 500,
+      },
+    );
   }
 }
