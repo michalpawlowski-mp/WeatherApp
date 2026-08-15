@@ -1,24 +1,27 @@
 # 🌤️ Weather App
 
-Aplikacja pogodowa zbudowana w **Next.js 16**, pobierająca dane w czasie rzeczywistym z **OpenWeatherMap API**. Umożliwia wyszukiwanie pogody dla dowolnego miasta oraz wyświetla kafelki z aktualną pogodą dla popularnych miast europejskich.
+Aplikacja pogodowa zbudowana w **Next.js 16**, pobierająca dane w czasie rzeczywistym z **OpenWeatherMap API**. Umożliwia wyszukiwanie pogody dla dowolnego miasta oraz wyświetla kafelki z aktualną pogodą dla popularnych miast z Europy, USA i Azji.
 
 ![Next.js](https://img.shields.io/badge/Next.js-16-black?logo=next.js)
 ![React](https://img.shields.io/badge/React-19-61DAFB?logo=react)
 ![Bootstrap](https://img.shields.io/badge/Bootstrap-5.3-7952B3?logo=bootstrap)
+[![Vercel](https://img.shields.io/badge/Vercel-deployed-black?logo=vercel)](https://weather-app-mpdev.vercel.app/)
 
 ## 🚀 Demo
 
-🔗 [LiveDemo](https://weather-app-mpdev.vercel.app/)
+🔗 [Live Demo](https://weather-app-mpdev.vercel.app/)
 
 ## ✨ Funkcjonalności
 
 - 🔍 Wyszukiwanie pogody dla dowolnego miasta na świecie
-- 🌍 Kafelki z pogodą dla 6 popularnych miast (Warszawa, Londyn, Madryt, Paryż, Rzym, Berlin, Waszyngton, Tokio)
+- 📍 Pobieranie pogody dla bieżącej lokalizacji użytkownika
+- 🌍 Kafelki z aktualną pogodą dla popularnych miast z Europy, USA i Azji
 - 🌡️ Temperatura, odczuwalna, wilgotność i prędkość wiatru
 - ⌨️ Wyszukiwanie przez `Enter` lub przycisk
 - 💬 Opisy pogody w języku polskim
-- ⚠️ Pełna obsługa błędów (brak miasta, błąd połączenia, rate limit API)
+- ⚠️ Pełna obsługa błędów (brak miasta, błąd połączenia, brak zgody na lokalizację, rate limit API)
 - 📱 Responsywny layout — działa na mobile i desktop
+- 📄 Atrybucja danych zgodna z warunkami OpenWeatherMap
 
 ---
 
@@ -33,13 +36,26 @@ Aplikacja pogodowa zbudowana w **Next.js 16**, pobierająca dane w czasie rzeczy
 
 ---
 
+## 🗂️ Struktura projektu
+
+```
+app/
+├── api/weather/     # Route handler (proxy do OpenWeatherMap)
+├── components/      # Komponenty prezentacyjne
+├── constants/       # Lista popularnych miast
+├── hooks/           # useSearch, useCityCards
+└── assets/          # Obrazki
+```
+
+---
+
 ## ⚙️ Uruchomienie lokalne
 
 ### 1. Klonowanie repozytorium
 
 ```bash
-git clone https://github.com/twoj-username/weather-app.git
-cd weather-app
+git clone https://github.com/michalpawlowski-mp/WeatherApp.git
+cd WeatherApp
 ```
 
 ### 2. Instalacja zależności
@@ -50,7 +66,7 @@ npm install
 
 ### 3. Zmienne środowiskowe
 
-Utwórz plik `.env.local` w katalogu głównym projektu:
+Skopiuj `.env.example` do `.env.local` i uzupełnij klucz API:
 
 ```env
 OPENWEATHER_API_KEY=twoj_klucz_api
@@ -82,12 +98,15 @@ Aplikacja używa **Next.js API Route** jako proxy do OpenWeatherMap — klucz AP
 
 ```
 Przeglądarka → /api/weather?city=Warszawa → OpenWeatherMap API
+Przeglądarka → /api/weather?lat=52.23&lon=21.01 → OpenWeatherMap API
 ```
 
 Logika aplikacji jest podzielona na dwa custom hooki:
 
-- `useSearch` (wyszukiwanie miasta)
-- `useCityCards` (ładowanie popularnych miast).
+- `useSearch` — wyszukiwanie pogody dla wybranego miasta oraz pobieranie pogody na podstawie geolokalizacji (`navigator.geolocation`)
+- `useCityCards` — równoległe ładowanie pogody dla popularnych miast (`Promise.all`)
+
+Komponenty są wyłącznie prezentacyjne i nie zawierają logiki biznesowej.
 
 ---
 
